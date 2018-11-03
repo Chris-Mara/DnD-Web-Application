@@ -6,17 +6,17 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-
+<button class="back" onclick="back()">Back</button>
 	<div class="center">
 		<h1>Registration</h1>
 
-		<form method="post" action="">
+		<form method="post" onsubmit="validatePassword()">
 			<label for="username"></label>
-			<input type="text" name="username" id="username" placeholder="Username" class="form-control" required> 			<br>
+			<input type="text" name="username" id="username" placeholder="Username" class="form-control" pattern="[A-Za-z0-9]{8,15}" required title="Must be between 8 and 15 Letters and Numbers"> 			<br>
 			<label for="password"></label>
-			<input type="password" name="password" id="password" placeholder="New Password" class="form-control" required>		<br>
+			<input type="password" name="password" id="password" placeholder="New Password" class="form-control" pattern=".{8,15}" required title="Must be between 8 and 15 characters">		<br>
 			<label for="password"></label>
-			<input type="password" name="password" id="password" placeholder="Retype Password" class="form-control" required>		<br>
+			<input type="password" name="cPassword" id="cPassword" placeholder="Retype Password" class="form-control" required>		<br>
 			<button class="register" type="submit">Register</button>
 		</form>
 	</div>
