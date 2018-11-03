@@ -1,9 +1,24 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var app = express();
+var mongo_client = require("mongodb").MongoClient;
 
+var app = express();
 var PORT_NUM = 5000;
 
+
+//Build DB
+var DB_URL = "mongodb://localhost:27017/";
+mongo_client.connect(DB_URL, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("playerDB");     
+    dbo.collection("players").findOne({}, function(err, res) {
+        if (err) throw err;
+        console.log(res.username);
+    });
+    db.close();
+});
+
+//Set up body parser for POST requests
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
