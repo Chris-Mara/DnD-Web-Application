@@ -22,8 +22,15 @@ mongo_client.connect(DB_URL, function(err, db) {
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
-app.get("/Login", function(request, response) {
-    response.sendFile("Public/Login/index.html");
+app.use(express.static(__dirname + "/public/"))
+
+//Routing
+app.get("/Login/index.html", function(request, response) {
+    response.sendFile("Login/index.html");
+});
+
+app.get("/Register/index.html", function(request, response) {
+    response.sendFile("Login/Register/index.html");
 });
 
 app.post("/Login", function(request, response) {
